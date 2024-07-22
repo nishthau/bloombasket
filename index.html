@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bloom Basket</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Bloom Basket</h1>
+        <button onclick="resetCart()" class="reset-cart">Reset Cart</button>
+        <!-- <div class="cart-icon" onclick="openCartModal()">🛒 <span id="cart-count">0</span></div> -->
+        <button onclick="openAdminLogin()" class="admin-cart">Admin</button>
+        <div id="cart-icon">
+            <img src="cart-icon.png" alt="Cart" width="30">
+            <span id="cart-count">0</span>
+        </div>
+        <!-- <a href="#" id="open-cart">Cart</a> Cart link to open modal -->
+    </header>
+    
+    <div id="category-filters">
+        <!-- <label>Search:<input type="text" id="search-box" placeholder="Search for groceries..." onkeyup="handleCheckboxChange(event)"></label> -->
+        <input type="text" id="search-box" placeholder="Search for groceries..." onkeyup="filterGroceries()">
+        <label><input type="checkbox" name="category" value="ALL" onchange="handleCheckboxChange(event)" checked> All products</label>
+        <label><input class="catgry" type="checkbox" name="category" value="ATTA" onchange="handleCheckboxChange(event)"> Atta</label>
+        <label><input class="catgry" type="checkbox" name="category" value="DAIRY" onchange="handleCheckboxChange(event)"> Dairy</label>
+        <label><input class="catgry" type="checkbox" name="category" value="DESI DAIRY" onchange="handleCheckboxChange(event)"> Desi Dairy</label>
+        <label><input class="catgry" type="checkbox" name="category" value="FLOUR" onchange="handleCheckboxChange(event)"> Flour</label>
+        <label><input class="catgry" type="checkbox" name="category" value="GROCERY" onchange="handleCheckboxChange(event)"> Grocery</label>
+        <label><input class="catgry" type="checkbox" name="category" value="VEGETABLE" onchange="handleCheckboxChange(event)"> Vegetable</label>
+        <label><input class="catgry" type="checkbox" name="category" value="KITCHEN" onchange="handleCheckboxChange(event)">Kitchen</label>
+        <!-- Add more categories as needed -->
+    </div>
+
+    <div id="pagination-controls"></div>
+
+    <div id="grocery-list"></div>
+    <!-- <button id="checkout-button">Checkout</button> -->
+
+    <div id="cart-modal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeCartModal()">&times;</span>
+            <h2>My cart</h2>
+            <ul id="cart-items"></ul>
+            <div class="cart-summary">
+                <p>Total Items: <span id="total-items">0</span>&nbsp;&nbsp;&nbsp;&nbsp;Subtotal: $<span id="subtotal">0.00</span> CAD</p>
+                <!-- <p></p> -->
+            </div>
+            <form id="checkout-form" onsubmit="submitCheckout(event)">
+                <div class="checkout-inputs">
+                    <label for="name">Name:</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div class="checkout-inputs">
+                    <label for="phone">Phone Number:</label>
+                    <input type="tel" id="phone" name="phone" pattern="[0-9]{10}" required>
+                </div>
+                <div class="checkout-inputs">
+                    <label for="address">Residential Address:</label>
+                    <textarea id="address" name="address" required></textarea>
+                </div>
+                <div>
+                    <button type="button" onclick="submitCheckout()" class="submit-button cart-button">Checkout</button>
+                    <button type="button" onclick="resetCart()" class="reset-button cart-button">Reset Cart</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+<!-- Checkout modal -->
+<!-- <div id="checkout-cart-modal" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeCartFormModal()">&times;</span>
+        <h2>Cart</h2>
+        <ul id="cart-items"></ul>
+        <div class="cart-summary">
+            <p>Total Items: <span id="total-items">0</span></p>
+            <p>Subtotal: $<span id="subtotal">0.00</span></p>
+        </div>
+        <form id="checkout-form" onsubmit="submitCheckout(event)">
+            <div class="checkout-inputs">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required>
+            </div>
+            <div class="checkout-inputs">
+                <label for="phone">Phone Number:</label>
+                <input type="tel" id="phone" name="phone" pattern="[0-9]{10}" required>
+            </div>
+            <div class="checkout-inputs">
+                <label for="address">Residential Address:</label>
+                <textarea id="address" name="address" required></textarea>
+            </div>
+            <button type="submit">Checkout</button>
+            <button type="button" onclick="resetCart()" class="reset-button">Reset Cart</button>
+        </form>
+    </div>
+</div> -->
+
+    <!-- Admin Login Modal -->
+    <div id="admin-login-modal" class="modal admin-login-modal1">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('admin-login-modal')">&times;</span>
+            <h2>Admin Login</h2>
+            <form id="admin-login-form">
+                <label for="admin-username">Username:</label>
+                <input type="text" id="admin-username" name="username" required>
+                <br>
+                <label for="admin-password">Password:</label>
+                <input type="password" id="admin-password" name="password" required>
+                <br>
+                <button type="submit">Login</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Admin Orders Modal -->
+    <div id="admin-orders-modal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('admin-orders-modal')">&times;</span>
+            <h2>All Orders</h2>
+            <div id="orders-list"></div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

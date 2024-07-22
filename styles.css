@@ -1,0 +1,503 @@
+/* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f2f2f2;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: #333;
+    color: #fff;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+h1 {
+    margin: 0;
+    font-size: 24px;
+}
+
+#cart-icon {
+    position: relative;
+    cursor: pointer;
+}
+
+#cart-icon img {
+    margin-right: 5px;
+}
+
+#cart-count {
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    background-color: #f00;
+    color: #fff;
+    border-radius: 50%;
+    padding: 4px;
+    font-size: 12px;
+}
+
+#cart-count.empty {
+    display: none;
+}
+
+#open-cart {
+    color: #fff;
+    text-decoration: none;
+    font-size: 16px;
+}
+
+#open-cart:hover {
+    text-decoration: underline;
+}
+
+#grocery-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding: 20px;
+    margin-left: 50px;
+    margin-top: 10px;
+}
+
+.grocery-item {
+    background-color: #fff;
+    padding: 5px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 150px;
+}
+
+.grocery-item h2 {
+    margin-top: 0;
+    font-size: 18px;
+}
+
+
+.quantity-controls button:hover {
+    background-color: #bbb;
+}
+
+/* .grocery-item button.add-to-cart {
+    background-color: #4CAF50;
+    color: #fff;
+    border: none;
+    padding: 8px 12px;
+    cursor: pointer;
+    border-radius: 4px;
+    margin-top: 10px;
+    width: 100%;
+}
+
+.grocery-item button.add-to-cart:hover {
+    background-color: #45a049;
+} */
+
+.grocery-item {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+    /* place-items: center; */
+}
+
+.grocery-content {
+    flex-grow: 1;
+}
+
+.grocery-controls-button {
+    display: flex;
+    flex-direction: column;
+    place-items: center
+}
+.add-to-cart {
+    background-color: #4CAF50; /* Green background */
+    color: white; /* White text */
+    padding: 4px;
+    text-align: center;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    /* margin-top: 10px; Add some margin to separate from content */
+    height:25px;
+    width: 120px;
+}
+
+.add-to-cart:hover {
+    background-color: #45a049; /* Darker green on hover */
+}
+
+
+button#checkout-button {
+    background-color: #007BFF;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 4px;
+    margin-top: 20px;
+}
+
+button#checkout-button:hover {
+    background-color: #0056b3;
+}
+
+/* Modal Styles */
+.modal {
+    display: none;
+    position: fixed;
+    right: 0;
+    top: 0;
+    /* width: 300px; */
+    height: 100%;
+    background-color: #fff;
+    box-shadow: -2px 0 10px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    overflow-y: auto;
+    overflow-x: hidden;
+    transition: transform 0.3s ease;
+    transform: translateX(100%);
+}
+#cart-modal{
+    width: 360px;
+}
+
+.modal.open {
+    transform: translateX(0);
+}
+
+.modal-content {
+    padding: 20px;
+    height: 100%;
+    box-sizing: border-box;
+}
+
+.close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+    font-size: 24px;
+    color: #333;
+}
+
+.close:hover {
+    color: #666;
+}
+
+.modal-content h2 {
+    margin-top: 0;
+    font-size: 24px;
+    color: #333;
+}
+
+#cart-items {
+    list-style-type: none;
+    padding: 0;
+}
+
+#cart-items li {
+    display: flex;
+    /* flex-direction: column; */
+    justify-content: space-between;
+    /* border: 1px solid #ccc; */
+    /* padding: 10px; */
+    /* margin-bottom: 10px; */
+    /* border-radius: 8px; */
+    /* background-color: #f9f9f9; */
+    gap: 10px;
+}
+
+/* .reset-button {
+    background-color: #DC3545;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 4px;
+    margin-top: 20px;
+    width: 100%;
+} */
+
+.reset-button:hover {
+    background-color: #c82333;
+}
+
+button {
+    font-size: 16px;
+    font-weight: bold;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+button:hover {
+    opacity: 0.8;
+}
+
+.product {
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin: 10px;
+    padding: 10px;
+    text-align: center;
+    width: 200px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.product img {
+    width: 100%;
+    height: auto;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 10px;
+}
+
+.quantity-controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 10px 0;
+}
+
+.quantity-controls input {
+    height: 20px;
+    width: 40px;
+    text-align: center;
+    border: 1px solid #ddd;
+    margin: 0 5px;
+}
+
+
+#cart-items {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+#cart-items li img {
+    max-width: 60px;
+    margin-right: 10px;
+}
+
+#cart-items li span {
+    flex-grow: 1;
+}
+
+.cart-quantity-controls {
+    display: flex;
+    align-items: center;
+}
+
+.cart-quantity-controls button {
+    background-color: #ddd;
+    border: none;
+    /* padding: 5px; */
+    cursor: pointer;
+    height: 20px;
+    width: 20px;
+}
+.quantity-controls button {
+    background-color: #ddd;
+    border: none;
+    /* padding: 5px; */
+    cursor: pointer;
+    height: 20px;
+    width: 20px;
+}
+#cart-items li{
+    display: flex;
+    /* flex-direction: column; */
+    justify-content: space-between;
+    /* border: 1px solid #ccc; */
+    /* padding: 10px; */
+    margin-bottom: 10px;
+    /* border-radius: 8px; */
+    /* background-color: #f9f9f9; */
+    place-items: center;
+    gap: 10px;
+}
+
+.remove-btn {
+    background-color: transparent;
+    background-repeat: no-repeat;
+    border: none;
+    /* cursor: pointer;
+    overflow: hidden;
+    outline: none; */
+}
+.cart-quantity-controls span {
+    margin: 0 5px;
+}
+
+.cart-summary {
+    margin-top: 20px;
+    text-align: justify;
+    border-top: 3px solid #ddddddd6;
+    border-bottom: 3px solid #ddddddd6;
+    font-weight: bold
+}
+
+.cart-summary p {
+    margin: 5px 0;
+}
+
+#checkout-form{
+    margin-top: 20px;
+}
+.checkout-inputs {
+    margin: 10px 0;
+}
+
+.checkout-inputs label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.checkout-inputs input,
+.checkout-inputs textarea {
+    width: 93%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.cart-button {
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    margin-top: 10px;
+    border-radius: 5px;
+}
+
+
+/* Form styling inside the modal */
+form div {
+    margin-bottom: 15px;
+}
+
+form label {
+    display: block;
+}
+
+form input[type="text"],
+form input[type="tel"] {
+    width: 100%;
+    padding: 8px;
+    box-sizing: border-box;
+}
+
+form button[type="button"] {
+    width: 100%;
+    padding: 10px;
+}
+
+.reset-button {
+    background-color: rgb(248, 93, 93);
+}
+.submit-button {
+    background-color: rgb(13, 111, 203);
+}
+
+/* Additional CSS for category filters */
+#category-filters {
+    display: flex;
+    gap: 10px;
+    margin: 20px 0;
+}
+
+#category-filters label {
+    background-color: #f2f2f2;
+    padding: 5px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+#category-filters input[type="checkbox"] {
+    margin-right: 5px;
+}
+
+#category-filters input[type="text"] {
+    /* background-color: #f2f2f2; */
+    background-color: white;
+    padding: 5px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-left: 20px;
+}
+
+#pagination-controls {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+#pagination-controls button {
+    margin: 0 5px;
+    padding: 10px 15px;
+    border: none;
+    background-color: #eee;
+    cursor: pointer;
+}
+
+#pagination-controls button.active {
+    background-color: #333;
+    color: #fff;
+}
+
+/* 
+/* .admin-login-modal1 */
+/* .modal  { 
+.modal  {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 500px;
+    height: 300px;
+    overflow: auto;
+    background-color: rgb(0, 0, 0);
+    background-color: rgba(0, 0, 0, 0.4);
+    transition: right 0.5s ease;
+}
+
+ .modal-content {
+    background-color: #fefefe;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+}
+
+.admin-login-modal1 .close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.admin-login-modal1 .close:hover,
+.admin-login-modal1 .close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* Additional styles for admin modals 
+.admin-cart {
+    margin-top: 10px;
+}
+
+.cart-item {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+ */
